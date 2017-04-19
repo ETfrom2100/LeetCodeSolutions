@@ -20,3 +20,16 @@ var hammingWeight = function(n) {
     }
     return counter;
 };
+
+//solution 2: bit shift
+var hammingWeight = function(n) {
+    
+    var counter = 0;
+    
+   while(n!==0)
+   {
+       counter = counter + (n & 1);
+       n = n >>> 1;
+   }
+    return counter;
+};
