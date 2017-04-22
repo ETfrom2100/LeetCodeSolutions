@@ -41,3 +41,30 @@ var mergeTwoLists = function(l1, l2) {
     }
     return new_list.next;
 };
+
+//solution 2: recursion
+var mergeTwoLists2 = function(l1, l2) {
+    if(l1 === null)
+    {
+        return l2;
+    }
+    else if(l2 === null)
+    {
+        return l1;
+    }
+    else
+    {
+        var new_list;
+        if(l1.val > l2.val)
+        {
+            new_list = l2;
+            new_list.next = mergeTwoLists(l2.next,l1);
+        }
+        else
+        {
+            new_list = l1;
+            new_list.next = mergeTwoLists(l1.next,l2);
+        }
+        return new_list;
+    }
+};
