@@ -60,3 +60,42 @@ var repeatedSubstringPattern = function(s) {
     
     return false;
 };
+
+//solution2: KMP algorithm
+//http://jakeboxer.com/blog/2009/12/13/the-knuth-morris-pratt-algorithm-in-my-own-words/
+var repeatedSubstringPattern2 = function(s) {
+    
+    var prefix = kmp(s);
+    var len = prefix[s.length-1];
+    var n = s.length;
+    return len > 0 && n%(n-len)===0;
+};
+
+var kmp = function(str){
+    var len = str.length;
+    var dp = [];
+    var i=0,j=1;
+    dp[0]=0;
+    while(j<str.length)
+    {
+        if(str.charAt(i) == str.charAt(j))
+        {
+            dp[j] = i+1;
+            i++;
+            j++;
+        }
+        else
+        {
+            if(i===0)
+            {
+                dp[j]=0;
+                j++;
+            }
+            else
+            {
+                i=dp[i-1];
+            }
+        }
+    }
+    return dp;
+}
