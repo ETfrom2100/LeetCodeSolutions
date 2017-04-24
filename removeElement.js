@@ -32,3 +32,18 @@ var removeElement = function(nums, val) {
     }
     
 };
+
+//solution 2: O(n)
+var removeElement = function(nums, val) {
+    var pointer = 0;
+    
+    for(var i=0;i<nums.length;i++)
+    {
+        if(nums[i]!== val)
+        {
+            nums[pointer] = nums[i];
+            pointer++;
+        }
+    }
+    return pointer;
+};
