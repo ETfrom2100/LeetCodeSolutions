@@ -31,20 +31,18 @@ var reverseVowels = function(s) {
         }
     }
    
-    var reversedVowels = vowels.reverse();
-    
-    for(var j=0;j<s.length;j++)
+    var chars = s.split("");
+    var v_len = vowels.length;
+    for(var j=0;j<chars.length;j++)
     {
-        var curChar = s.charAt(j);
-        if(pattern.test(curChar))
+        
+        if(pattern.test(chars[j]))
         {
-            new_string += reversedVowels.splice(0,1);
+            chars[j] = vowels[--v_len]
         }
-        else
-        {
-            new_string += curChar;
-        }
+      
     }
-    return new_string;
+    
+    return chars.join("");
     
 };
