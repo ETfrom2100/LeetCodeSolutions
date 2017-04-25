@@ -38,7 +38,7 @@ var reverseVowels = function(s) {
         
         if(pattern.test(chars[j]))
         {
-            chars[j] = vowels[--v_len]
+            chars[j] = vowels[--v_len];
         }
       
     }
