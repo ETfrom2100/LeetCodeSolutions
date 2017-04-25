@@ -20,3 +20,31 @@ var reverseWords = function(s) {
     }
     return reversed.join(" ");
 };
+
+//solution 2: reverse the word when encountering a space " "
+var reverseWords2 = function(s) {
+    var chars = Array.from(s);
+    var m = 0;
+    for(var i=0;i<chars.length;i++)
+    {
+        if(chars[i] == ' ')
+        {
+            reverse(chars,m,i-1);
+            m = i+1;
+        }
+    }
+    reverse(chars,m,chars.length-1);
+    return chars.join("");
+    function reverse(arr,start,end)
+    {
+        
+        while(start < end)
+        {
+            var temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+};
